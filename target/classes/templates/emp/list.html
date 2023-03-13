@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="utf-8">
+    <title>自研项目</title>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+    <meta content="" name="keywords">
+    <meta content="" name="description">
+
+
+    <link rel="preconnect" th:href="@{https://fonts.googleapis.com/}">
+    <link rel="preconnect" th:href="@{https://fonts.gstatic.com/}" crossorigin="">
+    <link th:href="@{/css/css2.css}" rel="stylesheet">
+
+    <link th:href="@{/css/all.min.css}" rel="stylesheet">
+    <link th:href="@{/css/bootstrap-icons.css}" rel="stylesheet">
+
+    <link th:href="@{/css/owl.carousel.min.css}" rel="stylesheet">
+    <link th:href="@{/css/tempusdominus-bootstrap-4.min.css}" rel="stylesheet">
+
+    <link th:href="@{/css/bootstrap.min.css}" rel="stylesheet">
+
+    <link th:href="@{/css/style.css}" rel="stylesheet">
+</head>
+<body>
+<div class="container-fluid position-relative d-flex p-0">
+
+    <style>
+        p input{
+            width: 300px;
+            height: 30px;
+        }
+    </style>
+
+    <div id="spinner"
+         class="show bg-dark position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
+            <span class="sr-only">Loading...</span>
+        </div>
+    </div>
+
+
+    <div class="sidebar pe-4 pb-3">
+        <nav class="navbar bg-secondary navbar-dark">
+            <div th:insert="~{commons/commnos::topbor}"></div>
+        </nav>
+    </div>
+    <div class="content">
+        <div  th:insert="~{commons/commnos::inform}"></div>
+        <div class="container-fluid pt-4 px-4">
+            <div class="bg-secondary text-center rounded p-4">
+                <div class="d-flex align-items-center justify-content-between mb-4">
+                    <h6 class="mb-0">最近销售额</h6>
+                    <a th:href="@{/emp}" class="btn btn-sm btn-success">添加员工</a>
+                </div>
+                <div id="app">
+                    <form class="d-none d-md-flex ms-2">
+                        <p>ID：<input type="text" value="" maxlength="10" ></p>
+                        <p>姓名：<input type="text" value="" maxlength="10"></p>
+                        <p>部门：<input type="text" value="" maxlength="10"></p>
+                        <button type="submit" />
+                    </form>
+                </div>
+                <div class="table-responsive">
+                    <table class="table text-start align-middle table-bordered table-hover mb-0">
+                        <thead>
+                        <tr class="text-white">
+                            <th scope="col"><input class="form-check-input" type="checkbox"></th>
+                            <th scope="col">ID</th>
+                            <th scope="col">姓名</th>
+                            <th scope="col">图片</th>
+                            <th scope="col">邮箱</th>
+                            <th scope="col">性别</th>
+                            <th scope="col">部门</th>
+                            <th scope="col">出生日期</th>
+                            <th scope="col">操作</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr th:each="emp:${emp}">
+                            <td><input class="form-check-input" type="checkbox"></td>
+                            <th th:text="${emp.getId()}"></th>
+                            <th th:text="${emp.getLastName()}"></th>
+                            <th th:text="${emp.getUrl}"></th>
+                            <th th:text="${emp.getEmail()}"></th>
+                            <th th:text="${emp.getGender()==0?'女':'男'}"></th>
+                            <th th:text="${emp.departments.getDepartmentName()}"></th>
+                            <th th:text="${#dates.format(emp.getBirth(),'yyyy-MM-dd')}"></th>
+                            <td>
+                                <a class="btn btn-sm btn-primary" th:href="@{/emp/}+${emp.getId()}">编辑</a>
+                                <a class="btn btn-sm btn-danger"th:href="@{/delemp/}+${emp.getId()}">删除</a>
+                            </td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+    <a href="#" class="btn btn-lg btn-primary btn-lg-square back-to-top"><i class="bi bi-arrow-up"></i></a>
+</div>
+
+<script th:src="@{js/jquery-3.4.1.min.js}" type="873b6637b889f1f181771fc9-text/javascript"></script>
+<script th:src="@{js/bootstrap.bundle.min.js}" type="873b6637b889f1f181771fc9-text/javascript"></script>
+<script th:src="@{js/chart.min.js}" type="873b6637b889f1f181771fc9-text/javascript"></script>
+<script th:src="@{js/easing.min.js}" type="873b6637b889f1f181771fc9-text/javascript"></script>
+<script th:src="@{js/waypoints.min.js}" type="873b6637b889f1f181771fc9-text/javascript"></script>
+<script th:src="@{js/owl.carousel.min.js}" type="873b6637b889f1f181771fc9-text/javascript"></script>
+<script th:src="@{js/moment.min.js}" type="873b6637b889f1f181771fc9-text/javascript"></script>
+<script th:src="@{js/moment-timezone.min.js}" type="873b6637b889f1f181771fc9-text/javascript"></script>
+<script th:src="@{js/tempusdominus-bootstrap-4.min.js}" type="873b6637b889f1f181771fc9-text/javascript"></script>
+
+<script th:src="@{js/main.js}" type="873b6637b889f1f181771fc9-text/javascript"></script>
+<script th:src="@{js/rocket-loader.min.js}" data-cf-settings="873b6637b889f1f181771fc9-|49" defer=""></script>
+</body>
+</html>

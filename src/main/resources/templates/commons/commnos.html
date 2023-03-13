@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+
+<div class="sidebar pe-4 pb-3" th:fragment="topbor">
+    <nav class="navbar bg-secondary navbar-dark" >
+        <a href="index1.html" class="navbar-brand mx-4 mb-3">
+            <h3 class="text-primary"><i class="fa fa-user-edit me-2"></i>DarkPan</h3>
+        </a>
+        <div class="d-flex align-items-center ms-4 mb-4">
+            <div class="position-relative">
+                <img class="rounded-circle" th:src="@{picture/user.jpg}" alt="" style="width: 40px; height: 40px;">
+                <div class="bg-success rounded-circle border border-2 border-white position-absolute end-0 bottom-0 p-1"></div>
+            </div>
+            <div class="ms-3">
+                <h6 class="mb-0">张三</h6>
+                <span>管理员</span>
+            </div>
+        </div>
+        <div class="navbar-nav w-100">
+            <a href="index1.html" class="nav-item nav-link active"><i class="fa fa-tachometer-alt me-2"></i>数据面板</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+                        class="fa fa-laptop me-2"></i>元素</a>
+                <div class="dropdown-menu bg-transparent border-0">
+                    <a href="button.html" class="dropdown-item">按钮</a>
+                    <a href="typography.html" class="dropdown-item">按钮设置</a>
+                    <a href="element.html" class="dropdown-item">其他元素</a>
+                </div>
+            </div>
+            <a href="widget.html" class="nav-item nav-link"><i class="fa fa-th me-2"></i>工具</a>
+            <a th:href="@{/emps}" class="nav-item nav-link"><i class="fa fa-th me-2"></i>员工管理</a>
+            <a href="form.html" class="nav-item nav-link"><i class="fa fa-keyboard me-2"></i>表单</a>
+            <a href="table.html" class="nav-item nav-link"><i class="fa fa-table me-2"></i>表格</a>
+            <a href="chart.html" class="nav-item nav-link"><i class="fa fa-chart-bar me-2"></i>排行榜</a>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown"><i
+                        class="far fa-file-alt me-2"></i>其他</a>
+                <div class="dropdown-menu bg-transparent border-0">
+                    <a href="signin.html" class="dropdown-item">登陆</a>
+                    <a href="signup.html" class="dropdown-item">注册</a>
+                    <a href="404.html" class="dropdown-item">404错误</a>
+                    <a href="blank.html" class="dropdown-item">空白页</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+<div class="content">
+
+    <nav class="navbar navbar-expand bg-secondary navbar-dark sticky-top px-4 py-0" th:fragment="inform">
+        <a href="index1.html" class="navbar-brand d-flex d-lg-none me-4">
+            <h2 class="text-primary mb-0"><i class="fa fa-user-edit"></i></h2>
+        </a>
+        <a href="#" class="sidebar-toggler flex-shrink-0">
+            <i class="fa fa-bars"></i>
+        </a>
+        <form class="d-none d-md-flex ms-4">
+            <input class="form-control bg-dark border-0" type="search" placeholder="Search">
+        </form>
+        <div class="navbar-nav align-items-center ms-auto">
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                    <i class="fa fa-envelope me-lg-2"></i>
+                    <span class="d-none d-lg-inline-flex">消息</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                    <a href="#" class="dropdown-item">
+                        <div class="d-flex align-items-center">
+                            <img class="rounded-circle" th:src="@{picture/user.jpg}" alt=""
+                                 style="width: 40px; height: 40px;">
+                            <div class="ms-2">
+                                <h6 class="fw-normal mb-0">约翰给你发送的消息</h6>
+                                <small>15分钟前</small>
+                            </div>
+                        </div>
+                    </a>
+                    <hr class="dropdown-divider">
+                    <a href="#" class="dropdown-item">
+                        <div class="d-flex align-items-center">
+                            <img class="rounded-circle" th:src="@{picture/lisi.jpg}" alt=""
+                                 style="width: 40px; height: 40px;">
+                            <div class="ms-2">
+                                <h6 class="fw-normal mb-0">李四给你发送的消息</h6>
+                                <small>15分钟前</small>
+                            </div>
+                        </div>
+                    </a>
+                    <hr class="dropdown-divider">
+                    <a href="#" class="dropdown-item">
+                        <div class="d-flex align-items-center">
+                            <img class="rounded-circle" th:src="@{picture/wangwu.jpg}" alt=""
+                                 style="width: 40px; height: 40px;">
+                            <div class="ms-2">
+                                <h6 class="fw-normal mb-0">王五给你发送的消息</h6>
+                                <small>15分钟前</small>
+                            </div>
+                        </div>
+                    </a>
+                    <hr class="dropdown-divider">
+                    <a href="#" class="dropdown-item text-center">查看所有消息</a>
+                </div>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                    <i class="fa fa-bell me-lg-2"></i>
+                    <span class="d-none d-lg-inline-flex">通知</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                    <a href="#" class="dropdown-item">
+                        <h6 class="fw-normal mb-0">您的信息已经更新完毕</h6>
+                        <small>5分钟前</small>
+                    </a>
+                    <hr class="dropdown-divider">
+                    <a href="#" class="dropdown-item">
+                        <h6 class="fw-normal mb-0">添加新用户</h6>
+                        <small>15分钟前</small>
+                    </a>
+                    <hr class="dropdown-divider">
+                    <a href="#" class="dropdown-item">
+                        <h6 class="fw-normal mb-0">密码已修改成功</h6>
+                        <small>15分钟前</small>
+                    </a>
+                    <hr class="dropdown-divider">
+                    <a href="#" class="dropdown-item text-center">查看所有通知</a>
+                </div>
+            </div>
+            <div class="nav-item dropdown">
+                <a href="#" class="nav-link dropdown-toggle" data-bs-toggle="dropdown">
+                    <img class="rounded-circle me-lg-2" th:src="@{picture/user.jpg}" alt=""
+                         style="width: 40px; height: 40px;">
+                    <span class="d-none d-lg-inline-flex">张三</span>
+                </a>
+                <div class="dropdown-menu dropdown-menu-end bg-secondary border-0 rounded-0 rounded-bottom m-0">
+                    <a href="#" class="dropdown-item">个人资料</a>
+                    <a href="#" class="dropdown-item">设置</a>
+                    <a href="#" class="dropdown-item" th:href="@{/user/logout}">退出登陆</a>
+                </div>
+            </div>
+        </div>
+    </nav>
+</div>
+</html>

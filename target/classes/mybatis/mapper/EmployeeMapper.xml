@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.example.springbootdemo1.mapper.EmployeeMapper" >
+
+    <resultMap id="postMap" type="com.example.springbootdemo1.pojo.Employee">
+        <result property="id" column="id"></result>
+        <result property="lastName" column="lastName"></result>
+        <result property="email" column="email"></result>
+        <result property="gender" column="gender"></result>
+        <result property="birth" column="birth"></result>
+        <result property="depald" column="depald"></result>
+        <!--先查询部门表，-->
+        <collection property="departments" ofType="com.example.springbootdemo1.pojo.Department"
+                    select="com.example.springbootdemo1.mapper.DepartmentMapper.departmentListData" column="{depaId=depaId}">
+        </collection>
+    </resultMap>
+
+    <!--查询所有员工信息-->
+    <select id="adminList" resultMap="postMap">
+        select e.id,e.lastName,e.email,e.gender,e.birth,e.depaId from boot.employee e
+    </select>
+    <!--根据ID查询员工信息-->
+    <select id="adminListById" resultMap="postMap">
+        select e.id,e.lastName,e.email,e.gender,e.birth,e.depaId from boot.employee e where id = #{id}
+    </select>
+    <!--根据ID查询员工信息-->
+    <select id="adminById" resultMap="postMap">
+        select e.id,e.lastName,e.email,e.gender,e.birth,e.depaId from boot.employee e where id = #{id}
+    </select>
+    <!--新增一个员工-->
+    <insert id="addEmployee" parameterType="User">
+        insert into boot.employee (lastName,email,gender,birth,depaId) value (#{lastName},#{email},#{gender},#{birth},#{depaId})
+    </insert>
+    <!--修改员工信息-->
+    <update id="updateEmployee" parameterType="User">
+        update boot.employee set lastName=#{lastName},email=#{email},gender=#{gender},birth=#{birth},depaId=#{depaId} where id=#{id}
+    </update>
+    <!--根据ID删除一个员工-->
+    <delete id="deleteEmployee" parameterType="int">
+        delete from boot.employee where id=#{id}
+    </delete>
+
+</mapper>
